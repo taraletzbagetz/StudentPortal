@@ -1,1 +1,6 @@
-Test
+Tools>Nuget Package Manager>Package Manager Console
+
+Add-Migration "Initial-Migration"
+
+Update-Database
+
