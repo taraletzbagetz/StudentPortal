@@ -34,7 +34,7 @@ namespace StudentPortal.Web.Controllers
             await dbContext.Students.AddAsync(student);
             await dbContext.SaveChangesAsync();
 
-            return View(vm);
+            return RedirectToAction("List", "Students");
         }
 
         [HttpGet]
@@ -42,6 +42,42 @@ namespace StudentPortal.Web.Controllers
             var students =  await dbContext.Students.ToListAsync();
 
             return View(students);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id) {
+            var student = await dbContext.Students.FindAsync(id);
+
+            return View(student);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Student vm) {
+            var student = await dbContext.Students.FindAsync(vm.Id);
+
+            if (student is not null) {
+                student.Name = vm.Name;
+                student.Email = vm.Email;
+                student.Phone = vm.Phone;
+                student.Subscribed = vm.Subscribed;
+
+                await dbContext.SaveChangesAsync(); 
+            }
+
+            return RedirectToAction("List", "Students");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Student vm) {
+            var student = await dbContext.Students.FirstOrDefaultAsync(x => x.Id == vm.Id);
+
+            if (student is not null)
+            {
+                dbContext.Students.Remove(student);
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Students");
         }
     }
 }
