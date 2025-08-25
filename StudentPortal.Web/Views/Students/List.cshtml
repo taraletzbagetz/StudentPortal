@@ -8,7 +8,7 @@
 
 <h1>Students</h1>
 <a class="btn btn-danger" asp-controller="Students" asp-action="Add">Add</a>
-<table class="table">
+<table class="table" id="tblList">
     <thead>
         <tr>
             <th>Id</th>
@@ -31,3 +31,75 @@
         }
     </tbody>
 </table>
+<table id="tblOrg" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary" id="btnTest">Test</button>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.3/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.3.3/js/dataTables.js"></script>
+
+<script>
+    // document.addEventListener("DOMContentLoaded", InitializeDatatable);
+
+    // function InitializeDatatable() { 
+    //     $("#tblOrg").DataTable();
+    // };
+    $(document).ready(function () { 
+        
+        $.noConflict();
+        //alert('test 12');
+        //alert($('#tblOrg').html());
+        $('#btnTest').click(function () {
+            alert('test test');
+        });
+       
+        $('#tblList').DataTable();
+
+        loadStudent();
+    })
+
+    function loadStudent(){
+        var empdata = [];
+        $.ajax({
+            type: "GET",
+            url: "/Students/GetAll",
+            async: true,
+            success: function(data) {
+                console.log(data);
+
+                $.each(data, function(key, value) {
+                    empdata.push([value.id, value.name, value.email, '']);
+                });
+
+                console.log(empdata);
+
+                $('#tblOrg').DataTable({
+                    data: empdata
+                });
+
+                // $.each(data, function(key, value) {
+                //     var editbtn = "<a onclick='FunEdit(this)' class='btn btn-primary'>Edit</a>";
+                //     var removebtn = "<a onclick='FunRemove(this)' class='btn btn-danger'>Remove</a>";
+                //     var hdn = "<input type='hidden' value=" + value.code + " />";
+                //     var action = editbtn +" | "+ removebtn + hdn;
+                //     empdata.push([value.code, value.name, value.email, value.phone, value.designation,action])
+                // })
+            },
+            failure: function(err) {
+
+            }
+        });
+    }
+</script>

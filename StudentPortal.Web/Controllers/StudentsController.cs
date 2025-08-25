@@ -79,5 +79,13 @@ namespace StudentPortal.Web.Controllers
 
             return RedirectToAction("List", "Students");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var students = await dbContext.Students.ToListAsync();
+
+            return Json(students);
+        }
     }
 }
