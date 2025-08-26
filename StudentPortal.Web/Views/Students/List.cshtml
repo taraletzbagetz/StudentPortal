@@ -44,7 +44,15 @@
         
     </tbody>
 </table>
+
 <button type="button" class="btn btn-primary" id="btnTest">Test</button>
+
+<div id="theForm">
+    <form>
+        <label for="time">Time</label>
+        <input type="text" name="time" id="time"/>
+    </form>
+</div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.3.3/css/dataTables.dataTables.css" />
@@ -61,11 +69,16 @@
         $.noConflict();
         //alert('test 12');
         //alert($('#tblOrg').html());
-        $('#btnTest').click(function () {
-            alert('test test');
-        });
+
+        // $('#btnTest').click(function () {
+        //     alert('test test');
+        // });
        
-        $('#tblList').DataTable();
+        // $('#tblList').DataTable();
+
+        let table = new DataTable('#tblList', {
+            // options
+        });
 
         loadStudent();
     })
@@ -102,4 +115,15 @@
             }
         });
     }
+
+    const showBtn = document.getElementById("btnTest");
+
+    showBtn.addEventListener("click", function () {
+        alert('test 2');
+        //document.getElementById("tblList").DataTable();
+
+        let table = new DataTable('#tblList', {
+            // options
+        });
+    });
 </script>
