@@ -117,13 +117,24 @@
     }
 
     const showBtn = document.getElementById("btnTest");
+    const theForm = document.getElementById("theForm");
+
+    if (theForm) { theForm.hidden = true; }
 
     showBtn.addEventListener("click", function () {
         alert('test 2');
         //document.getElementById("tblList").DataTable();
 
-        let table = new DataTable('#tblList', {
-            // options
-        });
+        // let table = new DataTable('#tblList', {
+        //     // options
+        // });
+
+        if (theForm.hidden) {
+            showBtn.innerText = "Hide";
+            theForm.hidden = false;
+        } else { 
+            theForm.hidden = true;
+            showBtn.innerText = "Show";
+        }
     });
 </script>
