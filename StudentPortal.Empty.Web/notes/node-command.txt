@@ -7,5 +7,8 @@ Check Node.js Version
 Check NPM Version
 	npm --version
 
+Install node_modules
+	npm i 
+
 CD to Project Folder then init npm
 	C://.../StudentPortal.Empty.Web>npm init -y
