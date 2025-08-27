@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Free Billing - @ViewBag.Title</title>
+    @RenderSection("header", false)
+</head>
+<body>
+    <header>
+        <h1>Free Billing</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Contact">Contact</a></li>
+        </ul>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>&copy; 2025 Free Billing</footer>
+    @RenderSection("scripts", false)
+</body>
+</html>

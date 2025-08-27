@@ -1,0 +1,12 @@
+
+Shift + F2
+	new file
+
+Tools>Command Line> Developer Command Prompt
+
+
+dotnet restore
+
+dotnet build
+
+dotnet run --project StudentPortal.Empty.Web

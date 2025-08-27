@@ -1,0 +1,13 @@
+﻿dotnet --help
+
+dotnet new list
+
+dotnet new console --help
+
+dotnet new console --use-program-main
+
+dotnet restore
+
+dotnet build
+
+dotnet run

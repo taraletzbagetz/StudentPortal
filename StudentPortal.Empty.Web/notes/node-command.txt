@@ -1,0 +1,11 @@
+Install NPM Task Runner
+	Extensions> Manage Extension
+
+Check Node.js Version
+	node --version
+
+Check NPM Version
+	npm --version
+
+CD to Project Folder then init npm
+	C://.../StudentPortal.Empty.Web>npm init -y

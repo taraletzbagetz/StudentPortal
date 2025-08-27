@@ -1,0 +1,3 @@
+https://tailwindcss.com/docs/installation/tailwind-cli
+
+npx @tailwindcss/cli -i wwwroot/site.src.css -o wwwroot/site.css --watch

@@ -1,0 +1,46 @@
+﻿@page
+@model ContactModel
+@{
+
+}
+@section Scripts{
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+}
+
+<h1>@Model.Title</h1>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+    <label asp-for="Contact.Name">Name</label>
+    <br />
+    <input asp-for="Contact.Name" type="text"/>
+    <span asp-validation-for="Contact.Name"></span>
+    <br />
+    <label asp-for="Contact.Email">Email</label>
+    <br />
+    <input asp-for="Contact.Email" type="text"/>
+     <span asp-validation-for="Contact.Email"></span>
+    <br />
+    <label asp-for="Contact.Subject">Subject</label>
+    <br />
+    <select asp-for="Contact.Subject">
+        <option>Work</option>
+        <option>Personal</option>
+        <option>Proposal</option>
+    </select>
+    <span asp-validation-for="Contact.Subject"></span>
+    <br />
+    <label asp-for="Contact.Body">Message</label>
+    <textarea rows="4" asp-for="Contact.Body"></textarea>
+    <span asp-validation-for="Contact.Body"></span>
+    <br />
+    <button type="submit">Send</button>
+    <br />
+    <div>
+        @Model.Title
+        @Model.Message
+    </div>
+</form>
